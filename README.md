@@ -1,4 +1,4 @@
-**Rubric (5 points)**  
-**Features (95 points)**  
+###**Rubric (5 points)**###  
+###**Features (95 points)**###  
 * **User and Event Management**  
-**Creative Portion (20 points)**
+###**Creative Portion (20 points)**###
