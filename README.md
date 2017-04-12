@@ -9,9 +9,6 @@ Back end scripts are written using Python Flask library (5 points)
 * **Calendar View (10 points)**  
 The calendar is displayed as a table grid with days as the columns and weeks as the rows, one month at a time (5 points)  
 The user can view different months as far in the past or future as desired (5 points)  
-* **Time Table View (10 points)**  
-The time table is displayed as a table grid with a column as a day and rows as time in the day (5 points)  
-The user can drag the cursor to select the dates (5 points)
 * **Sharing URL (15 points)**
 Make unique url when event is created (5 points)  
 Url is stored in SQL database and matches up to event (3 points)  
@@ -26,3 +23,6 @@ Code passes HTML validation (2 points)
 Communicating with others and joining rooms is easy and intuitive (4 points)  
 Site is visually appealing (1 point)
 ###**Creative Portion (20 points)**
+* **Time Table View (10 points)**  
+The time table is displayed as a table grid with a column as a day and rows as time in the day (5 points)  
+The user can drag the cursor to select the dates (5 points)
