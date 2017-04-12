@@ -4,7 +4,8 @@
 Events can be added, modified, and deleted (5 points)  
 Events have a title, date, location, description and time (2 points)  
 Users can log into the site, and they cannot view or manipulate events associated with other users (8 points)  
-All actions are performed over AJAX, without ever needing to reload the page (10 points)  
+All actions are performed over AJAX, without ever needing to reload the page (5 points)  
+Back end scripts are written using Python Flask library (5 points)
 * **Calendar View (10 points)**  
 The calendar is displayed as a table grid with days as the columns and weeks as the rows, one month at a time (5 points)  
 The user can view different months as far in the past or future as desired (5 points)  
