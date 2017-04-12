@@ -19,4 +19,7 @@ When event url is entered, loads info into event (7 points)
 * **Create Invitee Views (15 points)**  
 Users can see event time (5 points)  
 Users can select from time table (10 points)  
+* **Usability (5 points)**  
+Communicating with others and joining rooms is easy and intuitive (4 points)
+Site is visually appealing (1 point)
 ###**Creative Portion (20 points)**
