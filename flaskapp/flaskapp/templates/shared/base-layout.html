@@ -1,0 +1,90 @@
+{% extends "/skeleton.html" %}
+
+
+{% block HEADERTAGS %}
+{{ h.stylesheet_tag('//cdn.muicss.com/mui-0.9.12/css/mui.min.css') }}
+{{ h.stylesheet_tag(h.static('style.min.css')) }}
+<script>
+  window.addEventListener('load', function() {
+    loadjs('//cdn.muicss.com/mui-0.9.12/js/mui.min.js', 'mui');
+  });
+</script>
+
+{% with messages = get_flashed_messages() -%}
+{% if messages -%}
+<script>
+  window.addEventListener('load', function() {
+    var ul = document.createElement('ul'),
+        li;
+
+    ul.id = 'flash';
+    ul.className = 'mui-list--unstyled';
+
+    {% for message in messages: %}
+    li = document.createElement('li');
+    li.textContent = "{{ message }}";
+    ul.appendChild(li);
+    {% endfor %}
+
+    document.body.appendChild(ul);
+
+    setTimeout(function(){
+      ul.parentNode.removeChild(ul);
+    }, 6500);
+  });
+</script>
+{%- endif %}
+{%- endwith %}
+{% endblock %}
+
+
+{% block HTML %}
+<div id="wrapper">
+  <header id="header">
+    {{ base_header_html() }}
+  </header>
+  <div class="mui-container">
+    <div id="panel" class="mui-panel">
+      {% block BODY %}{% endblock %}
+    </div>
+  </div>
+</div>
+<footer id="footer">
+  {{ base_footer_html() }}
+</footer>
+{% endblock %}
+
+
+{% macro base_header_html() -%}
+<nav class="mui-appbar">
+  <div class="mui-container">
+    <table width="100%">
+      <tr class="mui--appbar-height">
+        <td>
+          <a class="mui--text-title mui--text-white" href="{{ url_for('content.home') }}">Flaskapp</a>
+        </td>
+        <td class="mui--text-right">
+          {% if g.user.is_authenticated: %}
+          <div class="mui-dropdown">
+            <a data-mui-toggle="dropdown">{{ g.user.email }} <span class="mui-caret"></span></a>
+            <ul class="mui-dropdown__menu">
+              <li><a href="{{ url_for('auth.logout') }}">Log out</a></li>
+            </ul>
+          </div>
+          {% else: %}
+          <a href="{{ url_for('auth.login') }}">Log in</a>
+          <a href="{{ url_for('auth.create_account') }}">Sign up</a>
+          {% endif %}
+        </td>
+      </tr>
+    </table>
+  </div>
+</nav>
+{%- endmacro %}
+
+
+{% macro base_footer_html() -%}
+<nav class="mui-container">
+  &copy;{{h.datetime.datetime.today().year}} Flaskapp
+</nav>
+{%- endmacro %}

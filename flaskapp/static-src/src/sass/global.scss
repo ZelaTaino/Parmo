@@ -1,0 +1,150 @@
+/**
+ * Flaskapp Global Stylesheet
+ * @module global
+ */
+
+
+/**
+ * Variables
+ */
+$bodyBackgroundColor: #eee;
+$footerHeight: 80px;
+$footerBackgroundColor: #ccc;
+$flashesColor: #fff;
+$flashesBackgroundColor: red;
+$modalFooterHeight: 50px;
+
+
+/**
+ * Global CSS
+ */
+html,
+body {
+  height: 100%;
+  background-color: $bodyBackgroundColor;
+  font-family: "Helvetica Neue", Helvetica, Arial, Verdana, Tahoma;
+}
+
+// enable font-smoothing
+html,
+body,
+input,
+textarea,
+buttons {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+}
+
+
+/**
+ * Layout CSS
+ */
+#header {
+  margin-bottom: 20px;
+}
+
+#wrapper {
+  box-sizing: border-box;
+  min-height: 100%;
+  margin-bottom: -($footerHeight);
+  padding-bottom: $footerHeight;
+}
+
+#footer {
+  box-sizing: border-box;
+  height: $footerHeight;
+  line-height: $footerHeight;
+  background-color: $footerBackgroundColor;
+}
+
+#panel {
+  box-sizing: border-box;
+  $heightExpr: "100vh - 200px";
+  min-height: -webkit-calc(#{$heightExpr});
+  min-height: -moz-calc(#{$heightExpr});
+  min-height: -o-calc(#{$heightExpr});
+  min-height: calc(#{$heightExpr});
+}
+
+
+/**
+ * Flash CSS
+ */
+#flash {
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  li {
+    font-size: 12px;
+    color: $flashesColor;
+    background-color: $flashesBackgroundColor;
+    padding: 1px 5px;
+    margin: 2px;
+  }
+}
+
+
+/**
+ * Header CSS
+ */
+#header td {
+  > a {
+    color: #fff;
+  }
+
+  > a:not(:last-child) {
+    margin-right: 10px;
+  }
+}
+
+#header a[data-mui-toggle="dropdown"] {
+  color: #fff;
+  cursor: pointer;
+
+  :hover {
+    color: #fff;
+  }
+}
+
+/**
+ * Modal CSS
+ */
+#modal-wrapper {
+  min-height: 100%;
+  margin-bottom: -($modalFooterHeight);
+  padding-bottom: $modalFooterHeight;
+
+  .mui-panel {
+    margin: 0 auto 20px;
+  }
+}
+
+#modal-footer {
+  height: $modalFooterHeight;
+  text-align: center;
+
+  a {
+    color: #333;
+  }
+}
+
+#modal-header-brand {
+  color: #777;
+  margin: 20px 0px;
+  display: inline-block;
+  font-size: 25px;
+  
+  &:hover {
+    text-decoration: none;
+  }
+
+  img {
+    height: 30px;
+    width: 30px;
+    position: relative;
+    top: -3px;
+  }
+}
+
