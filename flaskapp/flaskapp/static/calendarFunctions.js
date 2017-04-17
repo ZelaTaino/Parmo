@@ -2,14 +2,7 @@ var days_of_week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Fri
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 var times = ["6:00am", "7:00am", "8:00am", "9:00am", "10:00am", "11:00am", "12:00pm", "1:00pm", "2:00pm", "3:00pm", "4:00pm", "5:00pm", "6:00pm", "7:00pm", "8:00pm"];
 
-function setupDates(){
-	var today = new Date();
-}
-
-function getDaysInMonth(month, year){
-	console.log(new Date(year, month, 0).getDate());
-	return new Date(year, month, 0).getDate();
-}
+var date;
 
 function createHeader(day, month, date){
 	var $headerCell = $("<td>", {"class": "header"});
@@ -36,13 +29,12 @@ function createTimeCell(parentElem, time){
 	parentElem.append($timeCell);
 }
 
-$(document).ready(function(){
-	var today = new Date();
-	var day = today.getDay();
-	var month = today.getMonth();
-	var date = today.getDate();
-
+function updateDateHeader(date){
+	var day = date.getDay();
+	var month = date.getMonth();
+	var date = date.getDate();
 	var $weekrow = $("<tr>", {id: "weekrow"});
+	$("#time-table").empty();
 	$("#time-table").append($weekrow);
 
 	for(var i = 0; i<7; i++){
@@ -61,14 +53,25 @@ $(document).ready(function(){
 			$("#time-table").append($timeRow);
 		}
 	}
-});
-
+}
 
 
 $(document).ready(function(){
+        date = new Date();
+	updateDateHeader(date);
+
 	$(".time_cell").click(function(){
-		console.log("ENTERED");
 		$(this).addClass("selected_time");
-	});	
+	});
+
+	$("#next_button").click(function(){
+                date = new Date(date.getFullYear(), date.getMonth(), date.getDate()+7);	
+                updateDateHeader(date);
+        });
+
+	$("#prev_button").click(function(){
+		date = new Date(date.getFullYear(), date.getMonth(), date.getDate()-7);
+		updateDateHeader(date);
+	});
 });
 
