@@ -67,10 +67,15 @@ $(document).ready(function(){
 
 $(document).ready(function(){
 	$(".time_cell").click(function(){
-		console.log("ENTERED");
-		$(this).addClass("selected_time");
+		if($(this).hasClass("selected_time")){
+			$(this).removeClass("selected_time");
+		}else{
+			$(this).addClass("selected_time");
+		}
 	});	
 
-	
+	$("input").click(function(){
+		//store all elements with .selected_time class
+	});
 });
 
