@@ -30,19 +30,18 @@ function createTimeCell(parentElem, time){
 }
 
 function updateDateHeader(date){
-	var day = date.getDay();
-	var month = date.getMonth();
-	var date = date.getDate();
+        var day = date.getDate();
+        var displayDate = new Date(date.getFullYear(), date.getMonth(), day - date.getDay()%7); 
 	var $weekrow = $("<tr>", {id: "weekrow"});
 	$("#time-table").empty();
 	$("#time-table").append($weekrow);
 
 	for(var i = 0; i<7; i++){
-		var dayText = days_of_week[day%7];
-		createHeader(dayText, months[month], date);
-
-		day = day+1;
-		date = date+1;
+                var day = displayDate.getDate();
+		var month = displayDate.getMonth();
+		var dayText = days_of_week[displayDate.getDay()%7];
+		createHeader(dayText, months[month], day);
+		displayDate = new Date(displayDate.getFullYear(), month, day+1);
 	}
 
 	for(i in times){
@@ -54,7 +53,6 @@ function updateDateHeader(date){
 		}
 	}
 }
-
 
 $(document).ready(function(){
         date = new Date();
