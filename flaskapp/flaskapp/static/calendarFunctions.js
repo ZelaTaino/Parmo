@@ -30,14 +30,14 @@ function createTimeCell(parentElem, time){
 }
 
 function updateDateHeader(date){
-        var day = date.getDate();
-        var displayDate = new Date(date.getFullYear(), date.getMonth(), day - date.getDay()%7); 
+    var day = date.getDate();
+    var displayDate = new Date(date.getFullYear(), date.getMonth(), day - date.getDay()%7); 
 	var $weekrow = $("<tr>", {id: "weekrow"});
 	$("#time-table").empty();
 	$("#time-table").append($weekrow);
 
 	for(var i = 0; i<7; i++){
-                var day = displayDate.getDate();
+		var day = displayDate.getDate();
 		var month = displayDate.getMonth();
 		var dayText = days_of_week[displayDate.getDay()%7];
 		createHeader(dayText, months[month], day);
@@ -55,21 +55,30 @@ function updateDateHeader(date){
 }
 
 $(document).ready(function(){
-        date = new Date();
+	date = new Date();
 	updateDateHeader(date);
 
-	$(".time_cell").click(function(){
-		$(this).addClass("selected_time");
-	});
-
 	$("#next_button").click(function(){
-                date = new Date(date.getFullYear(), date.getMonth(), date.getDate()+7);	
-                updateDateHeader(date);
-        });
+		date = new Date(date.getFullYear(), date.getMonth(), date.getDate()+7);	
+		updateDateHeader(date);
+    });
 
 	$("#prev_button").click(function(){
 		date = new Date(date.getFullYear(), date.getMonth(), date.getDate()-7);
 		updateDateHeader(date);
+	});
+
+	$(".time_cell").click(function(){
+		console.log("ENTERED");
+		if($(this).hasClass("selected_time")){
+			$(this).removeClass("selected_time");
+		}else{
+			$(this).addClass("selected_time");
+		}
+	});	
+
+	$("input").click(function(){
+		//store all elements with .selected_time class
 	});
 });
 
