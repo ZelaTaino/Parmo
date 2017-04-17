@@ -1,0 +1,13 @@
+#time-table {
+	border-collapse: collapse;
+}
+
+#time-table td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid black;
+}
+
+.selected_time {
+	background-color: deepskyblue;
+}

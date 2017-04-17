@@ -1,6 +1,6 @@
 var days_of_week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-var times = ["6:00am", "7:00am", "8:00am", "9:00am", "10:00am", "11:00am", "12:00pm", "1:00pm", "2:00pm", "3:00pm", "4:00pm", "5:00pm", "6:00pm", "7:00pm", "8:00pm", "9:00pm", "10:00pm"];
+var times = ["6:00am", "7:00am", "8:00am", "9:00am", "10:00am", "11:00am", "12:00pm", "1:00pm", "2:00pm", "3:00pm", "4:00pm", "5:00pm", "6:00pm", "7:00pm", "8:00pm"];
 
 function setupDates(){
 	var today = new Date();
@@ -27,6 +27,15 @@ function createHeader(day, month, date){
 	$headerCell.append($date_div);
 }
 
+function createTimeCell(parentElem, time){
+	var $timeCell = $("<td>", {"class": "time_cell"});
+	var $div = $("<div>");
+
+	$div.html(time);
+	$timeCell.append($div);
+	parentElem.append($timeCell);
+}
+
 $(document).ready(function(){
 	var today = new Date();
 	var day = today.getDay();
@@ -44,6 +53,24 @@ $(document).ready(function(){
 		date = date+1;
 	}
 
-
-
+	for(i in times){
+		var $timeRow = $("<tr>");
+		time = times[i];
+		for(var i = 0; i < 7; i++){
+			createTimeCell($timeRow, time);
+			$("#time-table").append($timeRow);
+		}
+	}
 });
+
+
+
+$(document).ready(function(){
+	$(".time_cell").click(function(){
+		console.log("ENTERED");
+		$(this).addClass("selected_time");
+	});	
+
+	
+});
+
